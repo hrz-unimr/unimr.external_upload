@@ -28,24 +28,20 @@ Enabling unimr.external_upload
 These instructions are for Github version. 
 
 Then include it in the buildout.cfg::
-        [buildout]
-        ...
-
-        find-links =
-	   http://github.com/hrz-unimr/unimr.external_upload/tarball/master#egg=unimr.external_upload
-        parts = console_scripts
-
-        ...
-
-        [console_scripts]
-        recipe = zc.recipe.egg
-        eggs = unimr.external_upload
 
 
-        [instance]
-        ...
-        effective-user = www-data
-
+       [buildout]
+       ...
+       parts = instance
+       find-links =
+          http://github.com/hrz-unimr/unimr.external_upload/tarball/master#egg=unimr.external_upload
+       ...
+       
+       [instance]
+       ...
+       eggs = unimr.external_upload
+       effective-user = www-data
+       ...
 
 
 Installation on Nginx
