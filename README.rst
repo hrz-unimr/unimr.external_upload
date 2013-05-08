@@ -25,18 +25,22 @@ In order to avoid unnecessary file system IO Zope's TMPDIR should be on the same
 Enabling unimr.external_upload
 ==============================
 
-These instructions are for Github version.
-
-        cd src
-        git clone git://github.com/hrz-unimr/unimr.external_upload
+These instructions are for Github version. 
 
 Then include it in the buildout.cfg::
+        [buildout]
+        ...
 
-        eggs =
-             unimr.external_upload
+        find-links =
+	   http://github.com/hrz-unimr/unimr.external_upload/tarball/master#egg=unimr.external_upload
+        parts = console_scripts
 
-        develop =
-             src/unimr.external_upload
+        ...
+
+        [console_scripts]
+        recipe = zc.recipe.egg
+        eggs = unimr.external_upload
+
 
         [instance]
         ...
