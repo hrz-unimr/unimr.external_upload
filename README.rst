@@ -19,7 +19,7 @@ Nginx delivers the uploaded files to zope by means of a shared (distributed) fil
 Recommendation
 ==============
 
-In order to avoid unnecessary file system IO Zope's TMPDIR should be on the same volume as Nginx's upload_store (s.a. `HOWTO-Blobs-NFS.txt<https://github.com/zopefoundation/ZODB/blob/master/doc/HOWTO-Blobs-NFS.txt>_`).
+In order to avoid unnecessary file system IO Zope's TMPDIR should be on the same volume as Nginx's upload_store (s.a. `HOWTO-Blobs-NFS.txt <https://github.com/zopefoundation/ZODB/blob/master/doc/HOWTO-Blobs-NFS.txt>`_).
 
 
 Enabling unimr.external_upload
