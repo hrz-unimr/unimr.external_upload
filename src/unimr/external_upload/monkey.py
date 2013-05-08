@@ -43,8 +43,7 @@ class TemporaryFileWrapper(TFW):
 
             
 class NginxFieldStorage(MiniFieldStorage):
-
-    """Like FieldStorage, for use when no file uploads are possible."""
+    """Like FieldStorage, for use when nginx bypasses a file upload."""
 
     # Dummy attributes
     filename = None
@@ -79,6 +78,7 @@ class NginxFieldStorage(MiniFieldStorage):
         return "NginxFieldStorage(%r, %r, %r, %r)" % (self.name, self.filename, self.__path, self.type)
 
 class FieldStorageWrapper(FS):
+    """Wrapper for FieldStorage"""
 
     def read_multi(self, environ, keep_blank_values, strict_parsing):
         """Internal: read a part that is itself multipart."""
@@ -119,7 +119,7 @@ class FieldStorageWrapper(FS):
                     # cleanup nginx stuff
                     del self[fn]
                     
-                logger.info('Nginx File Upload (%(name)s, %(filename)s, %(path)s, %(content_type)s)' % fn_dict)
+                logger.debug('Nginx File Upload (%(name)s, %(filename)s, %(path)s, %(content_type)s)' % fn_dict)
                 self.list.append(NginxFieldStorage(**fn_dict))     
 
                 
